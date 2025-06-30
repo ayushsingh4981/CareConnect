@@ -15,7 +15,7 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <div className="App">
-      <img src="/black_circle_360x360.svg" classname="absolute top-0 right-1 w-2" />
+      <img src="/black_circle_360x360.svg" className="absolute top-0 right-1 h-20" />
         <Routes>
           <Route 
             path="/login" 
