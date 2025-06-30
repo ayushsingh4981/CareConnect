@@ -1,73 +1,141 @@
-# Welcome to your Lovable project
+# 🩺 CareConnect – Nursing Care Appointment Platform
 
-## Project info
+**CareConnect** is a full-stack web application designed to help users easily book verified nurses for home-based healthcare services. It provides a secure, role-based experience for users, nurses, and admins. Built with React, Vite, Tailwind CSS, Supabase, and generated using AI platforms like Lovable and Bolt.new.
 
-**URL**: https://lovable.dev/projects/45666920-a33a-4b25-814b-f2880446e33b
+---
 
-## How can I edit this code?
+## 🚀 Live Demo
 
-There are several ways of editing your application.
+> Coming soon – Add your frontend/backend deployment links here.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/45666920-a33a-4b25-814b-f2880446e33b) and start prompting.
+## ✨ Features
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🔐 Authentication
+- Supabase email/password login
+- Role-based access: `user`, `nurse`, `admin`
+- Auth state handled with React Context
+- Redirect to respective dashboards after login
 
-**Use your preferred IDE**
+### 👤 User Dashboard
+- View upcoming appointments
+- Book new appointment (select nurse, date, time, notes)
+- View list of nurses with specialization & location
+- Secure appointment creation (status: `pending`)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 🧑‍⚕️ Nurse Dashboard
+- View assigned appointments
+- See patient name, time, notes
+- Clean, readable appointment cards
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 🛠️ Admin Dashboard
+- View all appointments (pending, approved, completed)
+- Approve or reject appointments
+- Manage nurse listings (view/edit)
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🧱 Tech Stack
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 🖼️ Frontend
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Router](https://reactrouter.com/)
+- [React Context API](https://reactjs.org/docs/context.html)
+- [React Hot Toast](https://react-hot-toast.com/)
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 🧠 Backend
+- [Supabase](https://supabase.com/)
+  - Supabase Auth (email/password login)
+  - Supabase PostgreSQL Database
+  - Supabase Client (via `@supabase/supabase-js`)
+  - RLS (Row-Level Security) policies
+- [Bolt.new](https://bolt.new/) – used to generate backend logic and Supabase integration
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### 🛠️ AI Tools Used
+- [Bolt.new](https://bolt.new/) – for backend schema, APIs, and logic
+
+---
+
+## 📁 Folder Structure
+careconnect/
+├── public/
+├── src/
+│ ├── components/ # Reusable UI components
+│ ├── pages/ # Dashboard pages (User, Nurse, Admin)
+│ ├── auth/ # AuthContext & Supabase client
+│ ├── routes/ # Protected Routes & Routing config
+│ ├── App.jsx
+│ └── main.jsx
+├── supabase/ # Supabase schema (if exported)
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
+
+---
+
+## 🧪 Setup & Running Locally
+
+1. **Clone the repo**
+```bash
+git clone https://github.com/your-username/careconnect.git
+cd careconnect
 ```
 
-**Edit a file directly in GitHub**
+#Install dependencies
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm install
+```
 
-**Use GitHub Codespaces**
+Configure Supabase
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Create a project at supabase.com
 
-## What technologies are used for this project?
+Replace Supabase URL and anon key in your .env file:
 
-This project is built with:
+```env
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+VITE_SUPABASE_URL=your-url
+VITE_SUPABASE_ANON_KEY=your-key
+```
+Start the dev server
 
-## How can I deploy this project?
+```bash
+npm run dev
+```
+📊 Database Schema (Supabase)
+profiles: id, email, role (user, nurse, admin)
 
-Simply open [Lovable](https://lovable.dev/projects/45666920-a33a-4b25-814b-f2880446e33b) and click on Share -> Publish.
+appointments: id, user_id, nurse_id, date, time, notes, status
 
-## Can I connect a custom domain to my Lovable project?
+nurses: id, name, specialization, location, availability
 
-Yes, you can!
+All tables secured with Row-Level Security (RLS) for safe access control.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+🔮 Future Improvements
+ Add Stripe payment for booking appointments
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+ Enable smart nurse matching by location and schedule
+
+ Allow profile editing for nurses and users
+
+ Add notifications and reminders
+
+ Build analytics dashboard (revenue, top nurses)
+
+ Deploy as mobile-friendly PWA
+
+👏 Credits
+Built using   Bolt.new (FRONTEND & BACKEND)
+
+Supabase for powerful backend & auth
+
+Tailwind CSS for beautiful, fast UI
+
+📃 License
+This project is open-source and free to use for educational or demo purposes.
+
+
